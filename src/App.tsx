@@ -14,7 +14,7 @@ function App() {
 
   return (
     <CssBaseline>
-      <CarContext.Provider value={cars}>
+      <CarContext.Provider value={{ cars, setCars }}>
         <Container style={{ paddingTop: 50, paddingBottom: 50 }}>
           <CarList />
         </Container>

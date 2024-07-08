@@ -4,7 +4,7 @@ import { CarCard } from '../CarCard/CarCard';
 import { Grid } from '@mui/material';
 
 export const CarList = () => {
-  const cars = useContext(CarContext);
+  const { cars } = useContext(CarContext);
   return (
     <Grid container spacing={2} maxWidth={800}>
       {cars.map((e) => (
