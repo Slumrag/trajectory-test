@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import { carsApi } from './api/api';
 import { CarContext } from './store/store';
 import { CarData } from './store/types/CarData';
