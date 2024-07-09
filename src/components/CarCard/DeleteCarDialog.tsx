@@ -6,14 +6,14 @@ interface DeleteCarDialogProps {
   isOpen: boolean;
   car: CarData;
   handleClose: () => void;
-  handleAccept: () => void;
+  handleDelete: () => void;
 }
 
 export const DeleteCarDialog = ({
   isOpen,
   car,
   handleClose,
-  handleAccept,
+  handleDelete,
 }: DeleteCarDialogProps) => {
   return (
     <Dialog open={isOpen}>
@@ -34,7 +34,7 @@ export const DeleteCarDialog = ({
         <Button
           color='error'
           onClick={() => {
-            handleAccept();
+            handleDelete();
             handleClose();
           }}
         >
