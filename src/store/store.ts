@@ -3,7 +3,8 @@ import { CarData } from './types/CarData';
 
 export const CarContext = createContext<{
   cars: CarData[];
-  setCars?: Dispatch<SetStateAction<CarData[]>>;
+  setCars: Dispatch<SetStateAction<CarData[]>>;
 }>({
   cars: [],
+  setCars: () => {},
 });

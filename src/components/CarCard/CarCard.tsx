@@ -20,7 +20,7 @@ export const CarCard = ({ car }: CarCardProps) => {
     const carIndex = cars.findIndex((e) => e.id === car.id);
     const updatedCars = [...cars];
     updatedCars.splice(carIndex, 1);
-    setCars && setCars(updatedCars);
+    setCars(updatedCars);
   }
 
   function editCar(updatedValues: Partial<CarData>): void {
@@ -28,7 +28,7 @@ export const CarCard = ({ car }: CarCardProps) => {
     const newCar = { ...cars[carIndex], ...updatedValues };
     const updatedCars = [...cars];
     updatedCars.splice(carIndex, 1, newCar);
-    setCars && setCars(updatedCars);
+    setCars(updatedCars);
   }
 
   return (
