@@ -4,6 +4,7 @@ import { CarContext } from './store/CarContext';
 import { CarData } from './store/types/CarData';
 import { CarList } from './components/CarList/CarList';
 import { Container, CssBaseline } from '@mui/material';
+import { Footer } from './components/Footer';
 
 function App() {
   const [cars, setCars] = useState<CarData[]>([]);
@@ -14,8 +15,9 @@ function App() {
   return (
     <CssBaseline>
       <CarContext.Provider value={{ cars, setCars }}>
-        <Container style={{ paddingTop: 50, paddingBottom: 50 }}>
+        <Container style={{ paddingTop: 50 }}>
           <CarList />
+          <Footer></Footer>
         </Container>
       </CarContext.Provider>
     </CssBaseline>
