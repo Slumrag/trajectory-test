@@ -7,6 +7,7 @@ export const Footer = () => {
       direction={'row'}
       justifyContent={'center'}
       alignItems={'center'}
+      alignSelf={'stretch'}
       sx={{ backgroundColor: (theme) => theme.palette.primary.main, p: [4, 2] }}
     >
       <Typography variant='h5' color={'Background'}>

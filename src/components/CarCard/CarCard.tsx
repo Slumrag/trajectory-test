@@ -56,7 +56,7 @@ export const CarCard = ({ car }: CarCardProps) => {
         handleEdit={editCar}
       ></EditCardDialog>
 
-      <Card>
+      <Card id={car.id.toString()}>
         <CardContent sx={{ p: 3 }}>
           <Stack direction={'row'} justifyContent={'space-between'}>
             <Box>
