@@ -3,9 +3,10 @@ import { CarData } from '../../store/types/CarData';
 import { Box, Card, CardContent, IconButton, Stack, Typography } from '@mui/material';
 import { ColorDisplay } from './ColorDisplay';
 import { Delete, Edit } from '@mui/icons-material';
-import { CarContext } from '../../store/store';
+import { CarContext } from '../../store/CarContext';
 import { DeleteCarDialog } from './DeleteCarDialog';
 import { EditCardDialog } from './EditCardDialog';
+import { SorterContext } from '../../store/SorterContext';
 
 export interface CarCardProps {
   car: CarData;
@@ -13,6 +14,7 @@ export interface CarCardProps {
 
 export const CarCard = ({ car }: CarCardProps) => {
   const { cars, setCars } = useContext(CarContext);
+  const { sorter, setSorter } = useContext(SorterContext);
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
 
@@ -29,6 +31,14 @@ export const CarCard = ({ car }: CarCardProps) => {
     const updatedCars = [...cars];
     updatedCars.splice(carIndex, 1, newCar);
     setCars(updatedCars);
+
+    const updatedKeys = Object.keys(newCar).filter(
+      (key) => newCar[key as keyof CarData] !== cars[carIndex][key as keyof CarData]
+    );
+
+    if (updatedKeys.some((key) => key === sorter.key)) {
+      setSorter((s) => ({ ...s }));
+    }
   }
 
   return (

@@ -1,34 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { CarContext } from '../../store/store';
+import React, { useContext } from 'react';
+import { CarContext } from '../../store/CarContext';
 import { IconButton, MenuItem, Stack, TextField } from '@mui/material';
 import { CarData } from '../../store/types/CarData';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { SorterContext } from '../../store/SorterContext';
 interface CarSorterProps {}
 const sortOptions = [
   {
     label: 'цене',
     value: 'price',
   },
-  { label: 'году выпуска', value: 'year' },
+  {
+    label: 'году выпуска',
+    value: 'year',
+  },
 ];
-type SortDirections = 'ascending' | 'descending';
-
+/*  TODO: сортировать каротчки после редактирования цены */
 export const CarSorter = ({ props }: CarSorterProps) => {
-  const { cars, setCars } = useContext(CarContext);
-  const [sortDirection, setSortDirection] = useState<SortDirections>('ascending');
-  const [sortKey, setSortKey] = useState<keyof CarData | undefined>();
-
-  const sortCars = (key: keyof CarData, option: SortDirections) => {
-    const sortedCars = [...cars].sort((a, b) =>
-      option === 'ascending' ? +a[key] - +b[key] : +b[key] - +a[key]
-    );
-    setCars(sortedCars);
-  };
-
-  useEffect(() => {
-    sortKey && sortCars(sortKey, sortDirection);
-  }, [sortKey, sortDirection]);
+  const { sorter, setSorter } = useContext(SorterContext);
 
   return (
     <Stack direction={'row'} maxWidth={300}>
@@ -38,7 +28,10 @@ export const CarSorter = ({ props }: CarSorterProps) => {
         label={'Сортировать по'}
         fullWidth
         onChange={(e) => {
-          setSortKey(e.target.value as keyof CarData);
+          setSorter((s) => ({
+            key: e.target.value as keyof CarData,
+            option: s.option,
+          }));
         }}
         defaultValue={0}
       >
@@ -51,10 +44,13 @@ export const CarSorter = ({ props }: CarSorterProps) => {
       </TextField>
       <IconButton
         onClick={() => {
-          setSortDirection(sortDirection === 'ascending' ? 'descending' : 'ascending');
+          setSorter((s) => ({
+            key: s.key,
+            option: s.option === 'ascending' ? 'descending' : 'ascending',
+          }));
         }}
       >
-        {sortDirection === 'ascending' ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
+        {sorter.option === 'ascending' ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
       </IconButton>
     </Stack>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { carsApi } from './api/api';
-import { CarContext } from './store/store';
+import { CarContext } from './store/CarContext';
 import { CarData } from './store/types/CarData';
 import { CarList } from './components/CarList/CarList';
 import { Container, CssBaseline } from '@mui/material';
