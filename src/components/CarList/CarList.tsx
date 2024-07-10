@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CarContext } from '../../store/CarContext';
 import { CarCard } from '../CarCard/CarCard';
 import { Grid, Stack } from '@mui/material';

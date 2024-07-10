@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { CarData } from '../../store/types/CarData';
 import { Box, Card, CardContent, IconButton, Stack, Typography } from '@mui/material';
 import { ColorDisplay } from './ColorDisplay';

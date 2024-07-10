@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import { CarContext } from '../../store/CarContext';
+import { useContext } from 'react';
 import { IconButton, MenuItem, Stack, TextField } from '@mui/material';
 import { CarData } from '../../store/types/CarData';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { SorterContext } from '../../store/SorterContext';
-interface CarSorterProps {}
+
 const sortOptions = [
   {
     label: 'цене',
@@ -16,8 +15,8 @@ const sortOptions = [
     value: 'year',
   },
 ];
-/*  TODO: сортировать каротчки после редактирования цены */
-export const CarSorter = ({ props }: CarSorterProps) => {
+
+export const CarSorter = () => {
   const { sorter, setSorter } = useContext(SorterContext);
 
   return (

@@ -7,7 +7,7 @@ import {
   Stack,
   TextField,
 } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CarData } from '../../store/types/CarData';
 
 interface EditCardDialogProps {

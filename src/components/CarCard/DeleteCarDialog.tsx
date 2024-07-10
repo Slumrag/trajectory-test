@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { CarData } from '../../store/types/CarData';
 import { Button, Dialog, DialogActions, DialogContent, Typography } from '@mui/material';
 
